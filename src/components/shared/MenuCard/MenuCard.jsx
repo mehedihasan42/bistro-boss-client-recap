@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PMSingleCard = ({item}) => {
+const MenuCard = ({item}) => {
     const {name,recipe,image,price} = item
     return (
         <div className='flex'>
@@ -14,4 +14,4 @@ const PMSingleCard = ({item}) => {
     );
 };
 
-export default PMSingleCard;
+export default MenuCard;

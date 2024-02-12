@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../components/shared/SectionTitle/SectionTitle';
-import PMSingleCard from './PMSingleCard';
+import MenuCard from '../../../components/shared/MenuCard/MenuCard';
 
 const PolularManu = () => {
     const [menu,setMenu] = useState([])
@@ -19,7 +19,7 @@ const PolularManu = () => {
             <SectionTitle heading="FROM OUR MENU" subHeading="---Check it out---"/>
            <div className='grid grid-cols-2 justify-between'>
            {
-                menu.map(item=><PMSingleCard item={item}/>)
+                menu.map(item=><MenuCard key={item._id} item={item}/>)
             }
            </div>
            <div>

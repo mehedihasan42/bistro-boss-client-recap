@@ -27,7 +27,7 @@ const Testimonials = () => {
                <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
            {
                 testo.map(data=>
-                    <SwiperSlide>
+                    <SwiperSlide key={data._id}>
                         <div className='w-4/6 mx-auto text-center my-2'>
                         <Rating className='max-w-36 mx-auto'
     //   style={{ maxWidth: 180 }}

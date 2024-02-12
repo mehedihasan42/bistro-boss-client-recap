@@ -18,7 +18,7 @@ const ChefsRcms = () => {
             <SectionTitle heading="FROM OUR MENU" subHeading="---Check it out---"/>
            <div className='flex space-x-3'>
            {
-                menu.map(item=><ChefsCard item={item}/>)
+                menu.map(item=><ChefsCard key={item._id} item={item}/>)
             }
            </div>
         </div>
