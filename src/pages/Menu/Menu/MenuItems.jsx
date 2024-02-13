@@ -5,7 +5,7 @@ const MenuItems = ({items}) => {
 
     return (
        <div className='w-full mx-auto'>
-         <div className='grid grid-cols-2'>
+         <div className='grid lg:grid-cols-2 space-y-2'>
             {
                 items.map(item=><MenuCard key={item._id} item={item}></MenuCard>)
             }
