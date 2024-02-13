@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuCard from '../../../components/shared/MenuCard/MenuCard';
+import { Link } from 'react-router-dom';
 
 const MenuItems = ({items}) => {
 
@@ -10,7 +11,7 @@ const MenuItems = ({items}) => {
                 items.map(item=><MenuCard key={item._id} item={item}></MenuCard>)
             }
         </div>
-        <button className=''>ORDER YOUR FAVOURITE FOOD</button>
+       <Link to='/order'><button  className=''>ORDER YOUR FAVOURITE FOOD</button></Link>
        </div>
     );
 };

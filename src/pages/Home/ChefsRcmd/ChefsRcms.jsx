@@ -1,24 +1,16 @@
-import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../components/shared/SectionTitle/SectionTitle';
 import ChefsCard from './ChefsCard';
+import useMenu from '../../../components/hooks/useMenu';
 
 const ChefsRcms = () => {
-    const [menu,setMenu] = useState([])
-
-    useEffect(()=>{
-        fetch('menu.json')
-        .then(res=>res.json())
-        .then(data=>{
-            const items = data?.filter(item => item.category === 'popular')
-            setMenu(items)
-        })
-    },[])
+    const menu = useMenu()
+    const items = menu?.filter(item => item.category === 'popular')
     return (
         <div className='my-4'>
             <SectionTitle heading="FROM OUR MENU" subHeading="---Check it out---"/>
            <div className='flex space-x-3'>
            {
-                menu.map(item=><ChefsCard key={item._id} item={item}/>)
+                items.map(item=><ChefsCard key={item._id} item={item}/>)
             }
            </div>
         </div>

@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../components/shared/SectionTitle/SectionTitle';
 import MenuCard from '../../../components/shared/MenuCard/MenuCard';
+import useMenu from '../../../components/hooks/useMenu';
 
 const PolularManu = () => {
-    const [menu,setMenu] = useState([])
-
-    useEffect(()=>{
-        fetch('menu.json')
-        .then(res=>res.json())
-        .then(data=>{
-            const items = data?.filter(item => item.category === 'popular')
-            setMenu(items)
-        })
-    },[])
-
+    const menu = useMenu()
+    const items = menu?.filter(item => item.category === 'popular')
     return (
         <div className='my-4'>
             <SectionTitle heading="FROM OUR MENU" subHeading="---Check it out---"/>
            <div className='grid grid-cols-2 justify-between'>
            {
-                menu.map(item=><MenuCard key={item._id} item={item}/>)
+                items.map(item=><MenuCard key={item._id} item={item}/>)
             }
            </div>
            <div>

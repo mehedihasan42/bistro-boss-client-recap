@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Cover from '../../../components/shared/Cover/Cover';
 import SectionTitle from '../../../components/shared/SectionTitle/SectionTitle';
@@ -8,16 +7,11 @@ import soup from '../../../assets/menu/soup-bg.jpg'
 import saladImg from '../../../assets/menu/salad-bg.jpg'
 import pizzaImg from '../../../assets/menu/pizza-bg.jpg'
 import dessertImg from '../../../assets/menu/dessert-bg.jpeg'
+import useMenu from '../../../components/hooks/useMenu';
 
 const Menu = () => {
 
-    const [menu,setMenu] = useState([])
-
-    useEffect(()=>{
-        fetch("menu.json")
-        .then(res=>res.json())
-        .then(data=>setMenu(data))
-    },[])
+   const menu = useMenu()
 
     const offers = menu.filter(item=>item.category === "offered")
     const salad = menu.filter(item=>item.category === "salad").slice(0,4)
