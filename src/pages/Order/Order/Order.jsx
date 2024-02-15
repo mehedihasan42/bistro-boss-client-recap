@@ -5,10 +5,13 @@ import Cover from '../../../components/shared/Cover/Cover';
 import coverImg from '../../../assets/shop/order.jpg'
 import useMenu from '../../../components/hooks/useMenu';
 import OrderTab from '../OrderTab/OrderTab';
+import { useParams } from 'react-router-dom';
 
 const Order = () => {
     const [index,setIndex] = useState(0)
     const menu = useMenu()
+    const {category} = useParams()
+    console.log(category)
     const salad = menu.filter(item=>item.category === "salad")
     const drink = menu.filter(item=>item.category === "drinks")
     const dessert = menu.filter(item=>item.category === "dessert")

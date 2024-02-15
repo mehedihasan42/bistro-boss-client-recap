@@ -2,7 +2,7 @@ import React from 'react';
 import MenuCard from '../../../components/shared/MenuCard/MenuCard';
 import { Link } from 'react-router-dom';
 
-const MenuItems = ({items}) => {
+const MenuItems = ({items,title}) => {
 
     return (
        <div className='w-full mx-auto'>
@@ -11,7 +11,7 @@ const MenuItems = ({items}) => {
                 items.map(item=><MenuCard key={item._id} item={item}></MenuCard>)
             }
         </div>
-       <Link to='/order'><button  className=''>ORDER YOUR FAVOURITE FOOD</button></Link>
+       <Link to={`/order/${title}`}><button  className=''>ORDER YOUR FAVOURITE FOOD</button></Link>
        </div>
     );
 };
