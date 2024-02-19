@@ -31,15 +31,15 @@ const Menu = () => {
       <SectionTitle subHeading="---Don't miss---" heading="TODAY'S OFFER"></SectionTitle>
       <MenuItems items={offers} title="offers"></MenuItems>
 
-      <Cover img={dessertImg} title="DESSERTS" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat porro."></Cover>
+      <Cover img={dessertImg} title="Soup" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat porro."></Cover>
       <MenuItems items={soup} title="soup"></MenuItems>
 
       <Cover img={dessertImg} title="DESSERTS" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat porro."></Cover>
       <MenuItems items={dessert} title="dessert"></MenuItems>
      
 
-      <Cover img={soupImg} title="Soup" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat porro."></Cover>
-      <MenuItems items={soup} title="soup"></MenuItems>
+      <Cover img={soupImg} title="Drinks" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat porro."></Cover>
+      <MenuItems items={drink} title="soup"></MenuItems>
       
 
       <Cover img={saladImg} title="Salad" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat porro."></Cover>

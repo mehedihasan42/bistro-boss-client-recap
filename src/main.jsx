@@ -6,6 +6,8 @@ import {
 import './index.css'
 import router from './routes/Routes.jsx';
 import { HelmetProvider } from 'react-helmet-async';
+import SearchByName from './App.jsx';
+import App from './App.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

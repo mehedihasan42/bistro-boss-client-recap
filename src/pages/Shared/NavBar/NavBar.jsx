@@ -29,8 +29,8 @@ const NavBar = () => {
       <div className="navbar-end space-x-4 font-bold">
         <Link to="/">Home</Link>
         <Link to="/menu">Our Menu</Link>
-        <Link to="/order/dessert">Order</Link>
-        <Link className="btn">Log In</Link>
+        <Link to="/order/pizza">Order</Link>
+        <Link to="/login" className="btn">Log In</Link>
       </div>
     </div>
   );
