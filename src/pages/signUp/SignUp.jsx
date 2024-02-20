@@ -1,46 +1,28 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-const Login = () => {
-    const capthaRef = useRef(null)
-    const [disable,setDisable] = useState(true)
-    const {signIn} = useContext(AuthContext)
+const SignUp = () => {
+    const {createUser,updateUserProfile} = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
 
     const from = location.state?.from?.pathname || "/";
 
-    useEffect(()=>{
-        loadCaptchaEnginge(6); 
-    },[])
-
-    const handleCaptcha = () =>{
-        const user_captcha = capthaRef.current.value;
-        console.log(user_captcha)
-        if(validateCaptcha(user_captcha)){
-            setDisable(false)
-        }
-        else{
-            setDisable(true)
-        }
-    }
-
     const {
         register,
         handleSubmit,
+        watch,
         formState: { errors },
       } = useForm()
 
       const onSubmit = (data) => {
-        console.log(data)
-        signIn(data.email,data.password)
+        createUser(data.email,data.password)
         .then(result=>{
-          const loggedUser = result.user;
-          console.log(loggedUser)
+          const user = result.user;
+          console.log(user)
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -50,6 +32,9 @@ const Login = () => {
           });
           navigate(from, { replace: true });
         })
+
+        updateUserProfile(data.name)
+        .catch(error=>console.error(error))
       }
 
     return (
@@ -61,6 +46,12 @@ const Login = () => {
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input type="text" placeholder="name" className="input input-bordered" {...register("name", { required: true })} />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -76,20 +67,15 @@ const Login = () => {
                   <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                 </label>
               </div>
-              <div className="form-control">
-              <LoadCanvasTemplate />
-              <input onBlur={handleCaptcha} type="text" ref={capthaRef} placeholder="write the above captha" className="input input-bordered" />
-              </div>
               <div className="form-control mt-6">
-              {/* <input type="submit"/> */}
-              <button disabled={disable} className="btn btn-primary">Login</button>
+                <button className="btn btn-primary">Login</button>
               </div>
             </form>
-            <Link to='/signUp'>Go to Sign Up Page</Link>
+            <Link to='/login'>Go to Sign Up Page</Link>
           </div>
         </div>
       </div>
     );
 };
 
-export default Login;
+export default SignUp;
