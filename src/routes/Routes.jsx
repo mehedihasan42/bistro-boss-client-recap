@@ -8,6 +8,18 @@ import Login from '../pages/Login/Login';
 import SignUp from '../pages/signUp/SignUp';
 import Secret from '../pages/secret/Secret';
 import PrivetRoute from './PrivetRoute';
+import DashBoard from '../Layout/DashBoard';
+import AdminHome from '../pages/DashBoard/AdminHome/AdminHome';
+import AddItems from '../pages/DashBoard/AddItems/AddItems';
+import ManageItems from '../pages/DashBoard/ManageItems/ManageItems';
+import ManageBookings from '../pages/DashBoard/ManageBookings/ManageBookings';
+import AllUsers from '../pages/DashBoard/AllUsers/AllUsers';
+import UserHome from '../pages/DashBoard/User/UserHome/UserHome';
+import Reservation from '../pages/DashBoard/User/Reservation/Reservation';
+import PaymentHis from '../pages/DashBoard/User/PaymentHis/PaymentHis';
+import MyCart from '../pages/DashBoard/User/MyCart/MyCart';
+import AddReview from '../pages/DashBoard/User/AddReview/AddReview';
+import MyBookings from '../pages/DashBoard/User/MyBookings/MyBookings';
 
 const router = createBrowserRouter([
     {
@@ -40,6 +52,56 @@ const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path:'/Dashboard',
+      element:<DashBoard></DashBoard>,
+      children:[
+        {
+          path:'adminHome',
+          element:<AdminHome></AdminHome>
+        },
+        {
+          path:'addItems',
+          element:<AddItems></AddItems>
+        },
+        {
+          path:'manageItems',
+          element:<ManageItems></ManageItems>
+        },
+        {
+          path:'manageBookings',
+          element:<ManageBookings></ManageBookings>
+        },
+        {
+          path:'allUsers',
+          element:<AllUsers></AllUsers>
+        },
+        {
+          path:'userHome',
+          element:<UserHome></UserHome>
+        },
+        {
+          path:'reservation',
+          element:<Reservation></Reservation>
+        },
+        {
+          path:'paymentHis',
+          element:<PaymentHis></PaymentHis>
+        },
+        {
+          path:'myCart',
+          element:<MyCart></MyCart>
+        },
+        {
+          path:'addReview',
+          element:<AddReview></AddReview>
+        },
+        {
+          path:'myBooking',
+          element:<MyBookings></MyBookings>
+        },
+      ]
+    }
   ]);
 
   export default router

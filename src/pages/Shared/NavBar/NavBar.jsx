@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import useOrder from "../../../components/hooks/useOrder";
+import { FaCartPlus } from "react-icons/fa6";
 
 const NavBar = () => {
-  const {user,logOut} = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext);
+  const [orderData] = useOrder();
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     logOut()
-    .then(()=>{})
-    .catch(error=>console.log(error))
-  }
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="navbar fixed z-10 bg-opacity-40 bg-black text-white max-w-screen-xl">
@@ -30,19 +33,34 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
-       <div>
-       <p className="font-bold text-xl">Bistro Boss</p>
-       <p className="text-xs ml-1" style={{ letterSpacing: '0.3em' }}>Resturent</p>
-       </div>
+        <div>
+          <p className="font-bold text-xl">Bistro Boss</p>
+          <p className="text-xs ml-1" style={{ letterSpacing: "0.3em" }}>
+            Resturent
+          </p>
+        </div>
       </div>
       <div className="navbar-end space-x-4 font-bold">
         <Link to="/">Home</Link>
         <Link to="/menu">Our Menu</Link>
         <Link to="/order/pizza">Order</Link>
         <Link to="/secret">Secret</Link>
-        {
-          user?<button onClick={handleLogout} className="btn">Log Out</button>:<Link to="/login" className="btn">Log In</Link>
-        }
+        <Link to="/Dashboard">
+          {" "}
+          <button className="btn">
+            <FaCartPlus className="text-xl" />
+            <div className="badge">{orderData.length}</div>
+          </button>
+        </Link>
+        {user ? (
+          <button onClick={handleLogout} className="btn">
+            Log Out
+          </button>
+        ) : (
+          <Link to="/login" className="btn">
+            Log In
+          </Link>
+        )}
       </div>
     </div>
   );
