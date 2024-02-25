@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
+import image from "../../assets/others/authentication2.png"
 
 const Login = () => {
     const capthaRef = useRef(null)
@@ -54,10 +55,9 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+           <img src={image} alt="" />
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
@@ -82,7 +82,7 @@ const Login = () => {
               </div>
               <div className="form-control mt-6">
               {/* <input type="submit"/> */}
-              <button disabled={disable} className="btn btn-primary">Login</button>
+              <button disabled={disable} className="btn bg-[#D1A054] text-white">Login</button>
               </div>
             </form>
             <Link to='/signUp'>Go to Sign Up Page</Link>

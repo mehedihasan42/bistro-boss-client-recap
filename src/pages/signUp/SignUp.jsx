@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import GoogleLogin from "../GoogleLogin/GoogleLogin";
+import sideImage from "../../assets/others/authentication2.png";
+import './signup.css'
 
 const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -45,17 +48,13 @@ const SignUp = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen background">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+         <img src={sideImage} alt="" />
         </div>
-        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card shrink-0 w-full max-w-sm">
+          <h2 className="text-2xl font-bold text-center">Sign Up</h2>
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <label className="label">
@@ -96,10 +95,12 @@ const SignUp = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn bg-[#D1A054] text-white">Sign Up</button>
             </div>
           </form>
-          <Link to="/login">Go to Sign Up Page</Link>
+          <Link to="/login" className="text-[#D1A054] text-center">Already registered? Go to log in</Link>
+          <p className="text-center">Or sign up with</p>
+          <GoogleLogin></GoogleLogin>
         </div>
       </div>
     </div>
