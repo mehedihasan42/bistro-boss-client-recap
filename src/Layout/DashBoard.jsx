@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 
 const DashBoard = () => {
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open  bg-base-300">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         <Outlet></Outlet>
@@ -14,13 +14,13 @@ const DashBoard = () => {
           Open drawer
         </label>
       </div>
-      <div className="drawer-side  mx-auto">
+      <div className="drawer-side mx-auto">
         <label
           htmlFor="my-drawer-2"
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+        <ul className="menu p-4 w-80 min-h-full text-base-content  bg-[#D1A054]">
         <div className="mb-6">
           <p className="font-bold text-xl">Bistro Boss</p>
           <p className="text-xs ml-1" style={{ letterSpacing: "0.3em" }}>
