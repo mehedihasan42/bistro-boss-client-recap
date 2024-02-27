@@ -4,7 +4,9 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
-import image from "../../assets/others/authentication2.png"
+import image from "../../assets/others/authentication2.png";
+import './login.css'
+import GoogleLogin from '../GoogleLogin/GoogleLogin';
 
 const Login = () => {
     const capthaRef = useRef(null)
@@ -54,12 +56,13 @@ const Login = () => {
       }
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen background">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left">
            <img src={image} alt="" />
           </div>
-          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card shrink-0 w-full max-w-sm">
+            <h2 className="text-2xl font-bold text-center">Log In</h2>
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">
                 <label className="label">
@@ -82,10 +85,12 @@ const Login = () => {
               </div>
               <div className="form-control mt-6">
               {/* <input type="submit"/> */}
-              <button disabled={disable} className="btn bg-[#D1A054] text-white">Login</button>
+              <button disabled={false} className="btn bg-[#D1A054] text-white">Login</button>
               </div>
             </form>
-            <Link to='/signUp'>Go to Sign Up Page</Link>
+            <Link to='/signUp' className="text-[#D1A054] text-center">New here? Create a New Account</Link>
+            <p className="text-center">Or Log In with</p>
+            <GoogleLogin></GoogleLogin>
           </div>
         </div>
       </div>

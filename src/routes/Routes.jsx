@@ -20,6 +20,7 @@ import PaymentHis from '../pages/DashBoard/User/PaymentHis/PaymentHis';
 import MyCart from '../pages/DashBoard/User/MyCart/MyCart';
 import AddReview from '../pages/DashBoard/User/AddReview/AddReview';
 import MyBookings from '../pages/DashBoard/User/MyBookings/MyBookings';
+import AdminRoute from './AdminRoute';
 
 const router = createBrowserRouter([
     {
@@ -74,7 +75,7 @@ const router = createBrowserRouter([
         },
         {
           path:'allUsers',
-          element:<AllUsers></AllUsers>
+          element:<PrivetRoute><AdminRoute><AllUsers></AllUsers></AdminRoute></PrivetRoute>
         },
         {
           path:'userHome',

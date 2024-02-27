@@ -2,9 +2,13 @@ import React, { useContext } from "react";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const GoogleLogin = () => {
   const { googleLogin,updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate()
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const handleLogin = () => {
     googleLogin()
     .then((result) => {

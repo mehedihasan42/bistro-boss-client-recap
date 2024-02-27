@@ -39,7 +39,7 @@ const Menu = () => {
      
 
       <Cover img={soupImg} title="Drinks" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat porro."></Cover>
-      <MenuItems items={drink} title="soup"></MenuItems>
+      <MenuItems items={drink} title="drinks"></MenuItems>
       
 
       <Cover img={saladImg} title="Salad" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat porro."></Cover>
