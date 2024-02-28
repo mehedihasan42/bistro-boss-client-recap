@@ -15,7 +15,7 @@ const Order = () => {
     const searchQuaryRef = useRef(null)
     const initialIndex = categories.indexOf(category)
     const [index,setIndex] = useState(initialIndex)
-    const menu = useMenu()
+    const [menu] = useMenu()
    
     console.log(category)
 
@@ -63,20 +63,21 @@ const Order = () => {
           <Tab>Soup</Tab>
         </TabList>
     
+       
         <TabPanel>
-         <OrderTab items={renderMenuItems('soup')}></OrderTab>
-        </TabPanel>
-        <TabPanel>
-         <OrderTab items={renderMenuItems('salad')}></OrderTab>
+         <OrderTab items={renderMenuItems('dessert')}></OrderTab>
         </TabPanel>
         <TabPanel>
          <OrderTab items={renderMenuItems('drink')}></OrderTab>
         </TabPanel>
         <TabPanel>
-         <OrderTab items={renderMenuItems('dessert')}></OrderTab>
-        </TabPanel>
+         <OrderTab items={renderMenuItems('salad')}></OrderTab>
+        </TabPanel>     
         <TabPanel>
          <OrderTab items={renderMenuItems('pizza')}></OrderTab>
+        </TabPanel>
+        <TabPanel>
+         <OrderTab items={renderMenuItems('soup')}></OrderTab>
         </TabPanel>
       </Tabs>
        </div>

@@ -11,7 +11,7 @@ import useMenu from '../../../components/hooks/useMenu';
 
 const Menu = () => {
 
-   const menu = useMenu()
+   const [menu] = useMenu()
 
     const offers = menu.filter(item=>item.category === "offered")
     const salad = menu.filter(item=>item.category === "salad").slice(0,4)

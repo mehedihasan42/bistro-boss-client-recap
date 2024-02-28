@@ -3,6 +3,7 @@ import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useOrder from '../../../components/hooks/useOrder';
+import useAdmin from '../../../components/hooks/useAdmin';
 
 const OrderCard = ({item}) => {
 
@@ -11,29 +12,40 @@ const OrderCard = ({item}) => {
   const location = useLocation()
   const {_id,image,name,recipe,price} = item
   const [,refetch] = useOrder()
+  const [isAdmin] = useAdmin()
 
   const handleAddToCart = (item)=>{
     console.log(item)
     if(user){
      const orderData = {foodId:_id,image,name,recipe,price,email:user.email}
-     fetch('http://localhost:5000/order', {
-      method: 'POST',
-      body: JSON.stringify(orderData), // Serialize orderData to JSON string
-      headers: {
-        'Content-Type': 'application/json', // Specify content type as JSON
-      },
-    })
-    .then(res=>res.json())
-    .then(data=>{
-      if(data.insertedId){
-        Swal.fire({
-          title: "Order success!",
-          text:`${item.name} ordered successfully`,
-          icon: "success"
-        });
-        refetch()
-      }
-    })
+    if(!isAdmin){
+      fetch('http://localhost:5000/order', {
+        method: 'POST',
+        body: JSON.stringify(orderData), // Serialize orderData to JSON string
+        headers: {
+          'Content-Type': 'application/json', // Specify content type as JSON
+        },
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        if(data.insertedId){
+          Swal.fire({
+            title: "Order success!",
+            text:`${item.name} ordered successfully`,
+            icon: "success"
+          });
+          refetch()
+        }
+      })
+    }
+    else{
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "As a admin you can't order food!",
+        footer: '<a href="#">Why do I have this issue?</a>'
+      });
+    }
    }
    else{
     Swal.fire({
