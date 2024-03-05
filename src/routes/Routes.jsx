@@ -21,6 +21,8 @@ import MyCart from '../pages/DashBoard/User/MyCart/MyCart';
 import AddReview from '../pages/DashBoard/User/AddReview/AddReview';
 import MyBookings from '../pages/DashBoard/User/MyBookings/MyBookings';
 import AdminRoute from './AdminRoute';
+import MenuUpdate from '../pages/DashBoard/ManageItems/MenuUpdate';
+import Payed from '../pages/DashBoard/User/PaymentMethod/Payed';
 
 const router = createBrowserRouter([
     {
@@ -46,6 +48,11 @@ const router = createBrowserRouter([
         {
           path:'/signUp',
           element:<SignUp></SignUp>
+        },
+        {
+          path:'/menu/:id',
+          element:<MenuUpdate></MenuUpdate>,
+          loader:({params})=>fetch(`http://localhost:5000/menu/${params.id}`)
         },
         {
           path:'/secret',
@@ -101,6 +108,10 @@ const router = createBrowserRouter([
           path:'myBooking',
           element:<MyBookings></MyBookings>
         },
+        {
+          path:'payment',
+          element:<Payed></Payed>
+        }
       ]
     }
   ]);

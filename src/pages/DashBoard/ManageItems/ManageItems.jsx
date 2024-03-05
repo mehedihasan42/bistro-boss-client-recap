@@ -2,15 +2,42 @@ import React from "react";
 import useMenu from "../../../components/hooks/useMenu";
 import { FiTrash2 } from "react-icons/fi";
 import { FaEdit } from "react-icons/fa";
+import useAxiosSecure from "../../../components/hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
-  const [menu] = useMenu();
+  const [menu, refetch] = useMenu();
+  const axiosSecure = useAxiosSecure();
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`http://localhost:5000/menu/${id}`).then((data) => {
+          if (data.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Item deleted successfully.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
   return (
     <div className="bg-white p-6">
       <p className="text-xl font-bold mb-2">Total Items:{menu.length}</p>
       <div className="overflow-x-auto">
-        <table className="table ">
-          {/* head */}
+        <table className="table">
           <thead>
             <tr className="bg-[#D1A054] text-white">
               <th></th>
@@ -34,13 +61,18 @@ const ManageItems = () => {
                 </td>
                 <td>{item.name}</td>
                 <td>${item.price}</td>
+
                 <td>
-                 <button className="btn bg-[#D1A054]">
-                 <FaEdit className="text-xl text-white" />
-                 </button>
+                  <Link to={`/menu/${item._id}`} className="btn bg-[#D1A054]">
+                    <FaEdit className="text-xl text-white" />
+                  </Link>
                 </td>
+
                 <td>
-                  <button className="btn bg-rose-700">
+                  <button
+                    onClick={() => handleDelete(item._id)}
+                    className="btn bg-rose-700"
+                  >
                     <FiTrash2 className="text-xl text-white" />
                   </button>
                 </td>

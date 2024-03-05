@@ -97,7 +97,7 @@ const AddItems = () => {
             <input type="file" {...register("file", { required: true })} className="file-input file-input-bordered file-input-sm w-full max-w-xs" />
             </div>
             <div className="form-control mt-6">
-            <input className="btn btn-primary" type="submit" value='Add Item' />
+            <input className="btn bg-[#D1A054] text-white" type="submit" value='Add Item' />
             </div>
           </form>
         </div>

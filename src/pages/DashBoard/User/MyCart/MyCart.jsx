@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useOrder from "../../../../components/hooks/useOrder";
 import SectionTitle from "../../../../components/shared/SectionTitle/SectionTitle";
 import { FaRegTrashCan } from "react-icons/fa6";
@@ -58,7 +59,7 @@ const MyCart = () => {
         <p className="font-bold text-xl text-[#151515]">
           Total Price: ${total}
         </p>
-        <button className="btn btn-sm bg-[#D1A054]">Pay</button>
+        <button  className="btn btn-sm bg-[#D1A054]"><Link to='/Dashboard/payment'>Pay</Link></button>
       </div>
       <div className="w-10/12 mx-auto">
         <table className="table bg-white rounded-none">

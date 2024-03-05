@@ -12,7 +12,6 @@ const useOrder = () => {
         enabled:!loading,
         queryFn: async () => {
             const data = await axiosSecure.get(`/order?email=${user?.email}`)
-            console.log(data)
             return data.data;
           },
       })
